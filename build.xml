@@ -276,8 +276,13 @@
 	    <!-- write the index file -->
 	    <echo file="js/TEMPOUT/index.html" append="false">&lt;html&gt;&lt;head&gt;&lt;meta http-equiv="Refresh" CONTENT="0; URL=./files/jquery-jsPlumb-${version.with.dashes}-all-js.html"&gt;&lt;/head&gt;&lt;/html&gt;</echo>
 
+	    <delete dir="Data"/>
 		<delete dir="js/TEMP"/>
-		<delete dir="demo/apidocs"/>
+		<delete>
+			<fileset dir="demo/apidocs">
+				<include name="**/*.html"/>
+			</fileset>
+		</delete>
 		<mkdir dir="demo/apidocs"/>
 		<copy todir="demo/apidocs">
 			<fileset dir="js/TEMPOUT">
@@ -363,8 +368,8 @@
 		<replace dir="demo/yui3" token="${old}" value="${new}"/>
 		<replace dir="demo/mootools" token="${old}" value="${new}"/>
 
-		<!-- replace in README -->
-		<replace file="README.md" token="latest version is ${old}" value="latest version is ${new}"/>
+		<!-- replace in README >
+		<replace file="README.md" token="latest version is ${old}" value="latest version is ${new}"/-->
 
 	</target>
 	
